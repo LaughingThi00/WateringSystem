@@ -6,32 +6,42 @@ import {
   Text,
   View,
   Button,
-  Picker, ImageBackground,
+  Picker,
+  ImageBackground,
 } from "react-native";
 // import { Button, View } from "react-native-web";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+import { DeviceContext } from "../context/DeviceContext";
 
 const addnew = () => {
   const navigation = useNavigation();
+  const { data, addNewDevice } = React.useContext(DeviceContext);
   const [text, onChangeText] = React.useState("Tên");
   const [desc, onChangeDesc] = React.useState("Mô tả");
   const [selectedValue, setSelectedValue] = React.useState("default");
 
-
-
+  const handleSubmit = () => {
+    addNewDevice({
+      id: Math.floor(Math.random() * 1000),
+      name: text,
+      desc: desc,
+      timeon: selectedValue,
+      status: "off",
+      active: false,
+    });
+  };
   return (
     <SafeAreaView style={styles.container}>
+
       <ImageBackground source={require('../device.jpeg')} style={{ width: '100%', height: '100%', alignItems: "center" }}>
-        
-        <Text style={{ fontSize: 35, marginBottom: 20, paddingTop:70, fontStyle: "italic", fontWeight: "1000" }}>Thêm thiết bị mới</Text>
-        {/* <Text style={{ alignSelf: "flex-start", marginTop: 20 }}>Tên</Text> */}
+
+        <Text style={{ fontSize: 35, marginBottom: 20, paddingTop: 70, fontStyle: "italic", fontWeight: "1000" }}>Thêm thiết bị mới</Text>
         <TextInput
           style={styles.input}
           onChangeText={onChangeText}
           value={text}
         />
-        {/* <Text style={{ alignSelf: "flex-start" }}>Mô tả</Text> */}
         <TextInput
           style={styles.input}
           numberOfLines={4}
@@ -74,7 +84,7 @@ const addnew = () => {
         </Picker>
         <br></br>
         <View style={{ width: "10%" }}>
-          <Button title="Thêm vào" />
+          <Button onPress={() => handleSubmit()} title="Thêm vào" />
         </View>
         <br></br>
         <View style={{ width: "10%" }}>
@@ -86,7 +96,6 @@ const addnew = () => {
           />
         </View>
       </ImageBackground>
-
     </SafeAreaView>
   );
 };
@@ -94,7 +103,7 @@ const addnew = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-   // paddingTop: 70,
+
     paddingLeft: 30,
     paddingRight: 30,
     backgroundColor: "#ffffff",

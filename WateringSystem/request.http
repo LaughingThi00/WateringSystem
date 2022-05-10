@@ -1,0 +1,26 @@
+POST https://io.adafruit.com/api/v2/protosmouse/feeds/bbc-temperature/data
+Content-Type: application/json
+X-AIO-Key: aio_gjRs06Zcys1H7rI5elB7uhYtM30f
+
+{
+    "value": 22
+}
+
+###
+POST https://io.adafruit.com/api/v2/protosmouse/feeds/bbc-humi/data
+Content-Type: application/json
+X-AIO-Key: aio_gjRs06Zcys1H7rI5elB7uhYtM30f
+
+{
+    "value": 23
+}
+
+###
+POST https://io.adafruit.com/api/v2/protosmouse/feeds/bbc-light/data
+Content-Type: application/json
+X-AIO-Key: aio_gjRs06Zcys1H7rI5elB7uhYtM30f
+
+{
+    "value": 537
+}
+

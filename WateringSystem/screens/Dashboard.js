@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, TouchableOpacity } from "react-native";
 import { Link } from "react-router-native";
 import axios from "axios";
 import { Button } from "react-native-web";
 import { useNavigation } from "@react-navigation/core";
 import { AiFillLike } from "react-icons/ai";
+import { auth } from "../firebase";
 
+//import {HomeScreen} from "./Home";
 const Dashboard = ({ }) => {
   const navigation = useNavigation();
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        navigation.replace("Login");
+      })
+      .catch((error) => alert(error.message));
+  };
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -120,14 +130,14 @@ const Dashboard = ({ }) => {
     <View style={styles.container}>
       <ImageBackground source={require('../hom16S.jpeg')} style={{ width: '100%', height: '100%', alignItems: "center" }}>
 
-        <Text style={{ fontSize: 50, paddingTop:70, color: "green", fontWeight: "700", textAlign: "center" , }}>
+        <Text style={{ fontSize: 50, paddingTop: 70, color: "green", fontWeight: "700", textAlign: "center", }}>
           Smart Garden
         </Text>
 
         <View style={styles.infoContainer}>
           <View style={styles.infoItem}>
             <Text style={{ fontSize: 18 }}>Nhiệt độ</Text>
-            <Text>{temp} C</Text>
+            <Text>{temp} °C</Text>
           </View>
           <View style={styles.infoItem}>
             <Text style={{ fontSize: 18 }}>Độ ẩm</Text>
@@ -137,7 +147,7 @@ const Dashboard = ({ }) => {
 
         <View style={styles.lightInfo}>
           <Text style={{ fontSize: 18 }}>Ánh sáng</Text>
-          <Text>{light}</Text>
+          <Text>{light} nit</Text>
         </View>
 
         <View style={{ marginTop: 30 }}>
@@ -145,22 +155,29 @@ const Dashboard = ({ }) => {
 
         </View>
         <br />
-        <View style={{width:"10%"}}>
+        <View style={{ width: "10%" }}>
           <Button
-            style={{ fontSize: 30, marginTop: 50,shadowRadius: 20 }}
+            style={{ fontSize: 30, marginTop: 50, shadowRadius: 20 }}
             title="Danh sách thiết bị"
             onPress={() => navigation.navigate("ViewDevices")}
           />
         </View>
+
+        <StatusBar style="auto" />
+
         <br />
-        <View style={{width:"10%"}}>
+        <View style={{ width: "10%" }}>
           <Button
             style={{ fontSize: 30, marginTop: 50, }}
-            title="Thêm thiết bị"
-            onPress={() => navigation.navigate("addnew")}
+            title="Đăng xuất"
+            onPress={handleSignOut}
           />
         </View>
-        <StatusBar style="auto" />
+
+
+
+
+
       </ImageBackground>
 
     </View>
