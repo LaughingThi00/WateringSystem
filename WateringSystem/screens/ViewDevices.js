@@ -37,40 +37,41 @@ const ViewDevices = () => {
     {
       id: 1,
       name: "tb_1",
-      desc:"",
+      desc: "",
       status: "on",
-      timeon:"default",
+      timeon: "default",
       status: "off",
       active: false,
     },
     {
       id: 2,
       name: "tb_2",
-      desc:"",
+      desc: "",
       status: "off",
-      timeon:"default",
+      timeon: "default",
       status: "off",
       active: true,
     },
     {
       id: 3,
       name: "tb_3",
-      desc:"",
+      desc: "",
       status: "on",
-      timeon:"default",
+      timeon: "default",
       status: "off",
       active: false,
     },
     {
       id: 4,
       name: "tb_4",
-      desc:"",
-      timeon:"default",
+      desc: "",
+      timeon: "default",
       status: "off",
       active: true,
     },
-  ]); 
-  
+  ]);
+
+
   const removeData = id => {
     const removedArr = [...data].filter(data => data.id !== id);
 
@@ -87,8 +88,8 @@ const ViewDevices = () => {
         },
         {
           headers: {
-           // "X-AIO-Key": "aio_cGiP16QjN8IYZSTSs9XF63Mmh2Qo",
-           "X-AIO-Key": "aio_gjRs06Zcys1H7rI5elB7uhYtM30f",
+            // "X-AIO-Key": "aio_cGiP16QjN8IYZSTSs9XF63Mmh2Qo",
+            "X-AIO-Key": "aio_gjRs06Zcys1H7rI5elB7uhYtM30f",
           },
         }
       );
@@ -108,17 +109,11 @@ const ViewDevices = () => {
           <Text style={{ fontSize: 35, marginBottom: 20, fontStyle: "italic", fontWeight: "1000" }}>Danh sách thiết bị</Text>
           <View>
             {data.map((item) => (
-
-
-
               <View style={styles.deviceItem} key={item.id}>
                 <Text>Id: {item.id}</Text>
                 <TouchableOpacity onPress={() => navigation.navigate("Detail")}>
                   <Text>Name: {item.name}</Text>
                 </TouchableOpacity>
-
-
-
                 <View>
                   <SwitchDevice status={item.active} />
                 </View>
@@ -130,14 +125,8 @@ const ViewDevices = () => {
                   }
                   title={item.active === false ? "Tắt" : "Mở"}
                 />
-
-
-                <Button onPress={()=>removeData(item.id)} title="Xóa" color="red" />
+                <Button onPress={() => removeData(item.id)} title="Xóa" color="red" />
               </View>
-
-
-
-
 
             ))}
           </View>

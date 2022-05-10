@@ -18,9 +18,10 @@ const Detail = () => {
   const [desc, onChangeDesc] = React.useState("Mô tả");
   const [selectedValue, setSelectedValue] = React.useState("default");
   const data = {
+    id:"1",
     name: "TB-1",
     desc: "máy bơm công nghiệp",
-    time: 1,
+    timeon: 1,
     status: "on",
   };
   console.log(data);

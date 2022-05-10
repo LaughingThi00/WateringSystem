@@ -49,9 +49,11 @@ const LoginScreen = () => {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <br></br>      
+      <br></br>
       <ImageBackground source={require('../hom16S.jpeg')} style={{ width: '100%', height: '100%', alignItems: "center" }}>
 
-        <Text style={{ fontSize: 30, color: "green", fontWeight: "700", textAlign: "center", }}>
+      <Text style={{ fontSize: 50, paddingTop:70, color: "green", fontWeight: "700", textAlign: "center" , paddingBottom:300 }}>
           Smart Garden
         </Text>
         <View style={styles.inputContainer}>
@@ -94,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    
   },
   inputContainer: {
     width: "80%",

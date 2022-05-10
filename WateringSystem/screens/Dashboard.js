@@ -120,7 +120,7 @@ const Dashboard = ({ }) => {
     <View style={styles.container}>
       <ImageBackground source={require('../hom16S.jpeg')} style={{ width: '100%', height: '100%', alignItems: "center" }}>
 
-        <Text style={{ fontSize: 30, color: "green", fontWeight: "700", textAlign: "center" , }}>
+        <Text style={{ fontSize: 50, paddingTop:70, color: "green", fontWeight: "700", textAlign: "center" , }}>
           Smart Garden
         </Text>
 
